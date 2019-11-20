@@ -16,3 +16,4 @@
 //});
 
 Route::get("/", "PageController@index");
+Route::get('{path}', 'PageController@index')->where('path', '([A-z\d\-\/_.]+)' );

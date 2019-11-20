@@ -11,23 +11,22 @@
 
                                 <li>
                                     <a href="javascript: void(0);">
-                                        <i class="fe-airplay"></i>
-                                        <span class="badge badge-success badge-pill float-right">4</span>
+                                        <i class="fe-user"></i>
                                         <span> Users </span>
                                     </a>
                                     <ul class="nav-second-level" aria-expanded="false">
                                         <li>
-                                            <a href="{{url('/')}}">Users Lists</a>
+                                            <router-link to="/users">Users Lists</router-link>
                                         </li>
                                         <li>
-                                            <a href="dashboard-2.html">Dashboard 2</a>
+                                            <router-link to="/dashboard">Dashboard</router-link>
                                         </li>
-                                        <li>
-                                            <a href="dashboard-3.html">Dashboard 3</a>
-                                        </li>
-                                        <li>
-                                            <a href="dashboard-4.html">Dashboard 4</a>
-                                        </li>
+{{--                                        <li>--}}
+{{--                                            <a href="dashboard-3.html">Dashboard 3</a>--}}
+{{--                                        </li>--}}
+{{--                                        <li>--}}
+{{--                                            <a href="dashboard-4.html">Dashboard 4</a>--}}
+{{--                                        </li>--}}
                                     </ul>
                                 </li>
 
