@@ -63,53 +63,45 @@
             </div>
         </div><!-- end col -->
         <!-- Modal -->
-        <div class="modal fade" id="user-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Modal -->
         <div id="custom-modal" class="modal-demo">
             <button type="button" class="close" onclick="Custombox.modal.close();">
                 <span>&times;</span><span class="sr-only">Close</span>
             </button>
-            <h4 class="custom-modal-title">Add Members</h4>
+            <h4 class="custom-modal-title">Add User</h4>
             <div class="custom-modal-text text-left">
-                <form>
+                <form @submit.prevent = "createContact">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Enter name">
+                        <input v-model="form.name" type="text" class="form-control" id="name" name="name" placeholder="Enter name" required>
                     </div>
                     <div class="form-group">
                         <label for="position">Position</label>
-                        <input type="text" class="form-control" id="position" placeholder="Enter position">
+                        <input v-model="form.position" type="text" class="form-control" id="position" name="positon" placeholder="Enter position" required>
                     </div>
                     <div class="form-group">
                         <label for="company">Company</label>
-                        <input type="text" class="form-control" id="company" placeholder="Enter company">
+                        <input v-model="form.company" type="text" class="form-control" id="company" name="company" placeholder="Enter company">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                        <input v-model="form.email" type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input v-model="form.phone" type="number" class="form-control" id="phoneNumber" name="phone" placeholder="Enter Phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="photo">Photo</label>
+                        <!--<input v-model="form.photo" type="file" class="form-control" id="photo" name="photo">-->
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <textarea v-model="form.subject" class="form-control" id="subject" name="subject" placeholder="Enter subject"></textarea>
                     </div>
 
                     <div class="text-right">
                         <button type="submit" class="btn btn-success waves-effect waves-light">Save</button>
-                        <button type="button" class="btn btn-danger waves-effect waves-light m-l-10" onclick="Custombox.close();">Cancel</button>
+                        <button type="submit" class="btn btn-danger waves-effect waves-light m-l-10" onclick="Custombox.close();">Cancel</button>
                     </div>
                 </form>
             </div>
@@ -121,7 +113,26 @@
 
 <script>
     export default {
-        name: "users"
+
+        name: "users",
+        data(){
+            return {
+                form: new Form({
+                    name : '',
+                    position : '',
+                    email : '',
+                    company : '',
+                    phone : '',
+                    subject : '',
+                    photo : ''
+                })
+            }
+        },
+        methods: {
+            createContact(){
+                this.form.post('contacts');
+            }
+        }
     }
 </script>
 

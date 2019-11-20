@@ -16,4 +16,7 @@
 //});
 
 Route::get("/", "PageController@index");
+Route::resources([
+    'contacts' => 'ContactController'
+]);
 Route::get('{path}', 'PageController@index')->where('path', '([A-z\d\-\/_.]+)' );
