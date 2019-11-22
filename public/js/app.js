@@ -2440,11 +2440,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "users",
   data: function data() {
     return {
       form: new Form({
+        id: '',
         name: '',
         position: '',
         email: '',
@@ -2453,22 +2456,20 @@ __webpack_require__.r(__webpack_exports__);
         subject: '',
         photo: ''
       }),
-      contacts: {}
+      contacts: {},
+      editMode: false
     };
   },
   methods: {
-    openContactModal: function openContactModal(id) {
-      if (id == null) {
+    openContactModal: function openContactModal(contact) {
+      if (contact == null) {
         this.form.reset();
-        alert("null");
+        this.editMode = false;
       } else {
-        alert("dataaaaaaaaa");
+        this.form.fill(contact);
+        this.editMode = true;
       }
 
-      $('#contactModal').modal('show');
-    },
-    editContactModal: function editContactModal(id) {
-      //this.form.reset();
       $('#contactModal').modal('show');
     },
     createContact: function createContact() {
@@ -2522,6 +2523,27 @@ __webpack_require__.r(__webpack_exports__);
             swal.fire('Not Deleted!', 'Error has been happened', 'error');
           });
         }
+      });
+    },
+    updateContact: function updateContact() {
+      this.form.put('contacts/' + this.form.id).then(function () {
+        Fire.$emit('FireUpadte');
+        $('#contactModal').modal('hide');
+        swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Contact Updated Successfully',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      })["catch"](function () {
+        swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Error occured! Try again',
+          showConfirmButton: false,
+          timer: 1500
+        });
       });
     }
   },
@@ -25263,7 +25285,7 @@ var render = function() {
                               attrs: { href: "#" },
                               on: {
                                 click: function($event) {
-                                  return _vm.openContactModal(contact.id)
+                                  return _vm.openContactModal(contact)
                                 }
                               }
                             },
@@ -25326,7 +25348,43 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(2),
+              _c("div", { staticClass: "modal-header" }, [
+                _c(
+                  "h4",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: !_vm.editMode,
+                        expression: "!editMode"
+                      }
+                    ],
+                    staticClass: "modal-title",
+                    attrs: { id: "contactModalLabel" }
+                  },
+                  [_vm._v("Add New Contact")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "h4",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.editMode,
+                        expression: "editMode"
+                      }
+                    ],
+                    staticClass: "modal-title",
+                    attrs: { id: "exampleModalLabel" }
+                  },
+                  [_vm._v("Update Contact")]
+                ),
+                _vm._v(" "),
+                _vm._m(2)
+              ]),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c(
@@ -25335,7 +25393,7 @@ var render = function() {
                     on: {
                       submit: function($event) {
                         $event.preventDefault()
-                        return _vm.createContact($event)
+                        _vm.editMode ? _vm.updateContact() : _vm.createContact()
                       }
                     }
                   },
@@ -25539,7 +25597,52 @@ var render = function() {
                       })
                     ]),
                     _vm._v(" "),
-                    _vm._m(4)
+                    _c("div", { staticClass: "text-right" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-secondary",
+                          attrs: { type: "button", "data-dismiss": "modal" }
+                        },
+                        [_vm._v("Close")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: !_vm.editMode,
+                              expression: "!editMode"
+                            }
+                          ],
+                          staticClass:
+                            "btn btn-success waves-effect waves-light",
+                          attrs: { type: "submit" }
+                        },
+                        [_vm._v("Save")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.editMode,
+                              expression: "editMode"
+                            }
+                          ],
+                          staticClass:
+                            "btn btn-primary waves-effect waves-light",
+                          attrs: { type: "submit" }
+                        },
+                        [_vm._v("Update")]
+                      )
+                    ])
                   ]
                 )
               ])
@@ -25597,26 +25700,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c(
-        "h4",
-        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
-        [_vm._v("Add New Contact")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: {
-            type: "button",
-            "data-dismiss": "modal",
-            "aria-label": "Close"
-          }
-        },
-        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
-    ])
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
   },
   function() {
     var _vm = this
@@ -25629,30 +25724,6 @@ var staticRenderFns = [
         staticClass: "form-control",
         attrs: { type: "file", id: "photo", name: "photo" }
       })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-right" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("Close")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-success waves-effect waves-light",
-          attrs: { type: "submit" }
-        },
-        [_vm._v("Save")]
-      )
     ])
   }
 ]

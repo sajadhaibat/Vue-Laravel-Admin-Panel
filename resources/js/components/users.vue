@@ -56,7 +56,7 @@
                             <div class="btn-group dropdown">
                                 <a href="javascript: void(0);" class="table-action-btn dropdown-toggle arrow-none btn btn-light btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="#" @click="openContactModal(contact.id)"><i class="mdi mdi-pencil mr-2 text-muted font-18 vertical-middle"></i>Edit Contact</a>
+                                    <a class="dropdown-item" href="#" @click="openContactModal(contact)"><i class="mdi mdi-pencil mr-2 text-muted font-18 vertical-middle"></i>Edit Contact</a>
                                     <!--<a class="dropdown-item" href="#"><i class="mdi mdi-check-all mr-2 text-muted font-18 vertical-middle"></i>Close</a>-->
                                     <a class="dropdown-item" href="#" @click="deleteContact(contact.id)"><i class="mdi mdi-delete mr-2 text-muted font-18 vertical-middle"></i>Remove</a>
                                     <!--<a class="dropdown-item" href="#"><i class="mdi mdi-star mr-2 font-18 text-muted vertical-middle"></i>Mark as Unread</a>-->
@@ -76,13 +76,14 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="exampleModalLabel">Add New Contact</h4>
+                        <h4 class="modal-title" v-show="!editMode" id="contactModalLabel">Add New Contact</h4>
+                        <h4 class="modal-title" v-show="editMode" id="exampleModalLabel">Update Contact</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form @submit.prevent = "createContact">
+                        <form @submit.prevent = "editMode ? updateContact(): createContact()">
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input v-model="form.name" type="text" class="form-control" id="name" name="name" placeholder="Enter name" required>
@@ -116,7 +117,8 @@
                                 <!--<button type="submit" class="btn btn-success waves-effect waves-light">Save</button>-->
                                 <!--<button type="submit" class="btn btn-danger waves-effect waves-light m-l-10" onclick="Custombox.close();">Cancel</button>-->
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-success waves-effect waves-light">Save</button>
+                                <button v-show="!editMode" type="submit" class="btn btn-success waves-effect waves-light">Save</button>
+                                <button v-show="editMode" type="submit" class="btn btn-primary waves-effect waves-light">Update</button>
                             </div>
                         </form>
 
@@ -136,6 +138,7 @@
         data(){
             return {
                 form: new Form({
+                    id: '',
                     name : '',
                     position : '',
                     email : '',
@@ -145,21 +148,19 @@
                     photo : ''
                 }),
                 contacts: {},
+                editMode: false,
             }
         },
         methods: {
-            openContactModal(id){
-                if (id == null){
+            openContactModal(contact){
+                if (contact == null){
                     this.form.reset();
-                    alert("null");
+                    this.editMode = false;
                 }
                 else {
-                    alert("dataaaaaaaaa");
+                    this.form.fill(contact);
+                    this.editMode = true;
                 }
-                $('#contactModal').modal('show');
-            },
-            editContactModal(id){
-                //this.form.reset();
                 $('#contactModal').modal('show');
             },
 
@@ -220,6 +221,30 @@
 
                     }
                 });
+            },
+            updateContact(){
+                this.form.put('contacts/' + this.form.id)
+                    .then( () => {
+                        Fire.$emit('FireUpadte');
+                        $('#contactModal').modal('hide');
+                        swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Contact Updated Successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+
+                    })
+                    .catch( () => {
+                        swal.fire({
+                            position: 'center',
+                            icon: 'error',
+                            title: 'Error occured! Try again',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    });
             },
         },
 

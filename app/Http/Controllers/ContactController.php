@@ -77,7 +77,15 @@ class ContactController extends Controller
      */
     public function update(Request $request, Contact $contact)
     {
-        //
+        $contact = Contact::findorFail($contact->id);
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->position = $request->position;
+        $contact->company = $request->company;
+        $contact->phone = $request->phone;
+        $contact->subject = $request->subject;
+        $contact->photo = $request->photo;
+        $contact->save();
     }
 
     /**
