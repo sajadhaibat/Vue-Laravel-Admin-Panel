@@ -7,8 +7,11 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import swal from 'sweetalert2';
+import VueProgressBar from 'vue-progressbar'
 import { Form, HasError, AlertError} from 'vform';
 window.Form = Form;
+window.swal = swal;
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
 
@@ -27,9 +30,24 @@ const router = new VueRouter({
 Vue.filter('capitalFirst', function (text) {
     return text.charAt(0).toUpperCase() + text.slice(1);
 });
+window.Fire = new Vue();
 
 
+const options = {
+    color: '#bffaf3',
+    failedColor: '#874b4b',
+    thickness: '4px',
+    transition: {
+        speed: '0.01s',
+        opacity: '0.6s',
+        termination: 300
+    },
+    autoRevert: true,
+    location: 'top',
+    inverse: false
+};
 
+Vue.use(VueProgressBar, options);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

@@ -70,6 +70,8 @@
                 <!-- end row -->
             </div> <!-- container -->
             <router-view></router-view>
+            <!-- set progressbar -->
+            <vue-progress-bar></vue-progress-bar>
 {{--            <example-component></example-component>--}}
 
         </div> <!-- content -->
@@ -221,6 +223,11 @@
 
 <!-- Modal-Effect -->
 <script src="assets/libs/custombox/custombox.min.js"></script>
+<script>
+    $('#contacts-table').dataTable( {
+        "ordering": false
+    } );
+</script>
 
 </body>
 

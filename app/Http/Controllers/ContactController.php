@@ -14,7 +14,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return Contact::all();
+        return Contact::latest()->get();
     }
 
     /**
@@ -88,6 +88,7 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact)
     {
-        //
+        $contact = Contact::findorFail($contact->id);
+        $contact->delete();
     }
 }
