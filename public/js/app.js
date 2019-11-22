@@ -2422,6 +2422,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "users",
   data: function data() {
@@ -2434,13 +2438,25 @@ __webpack_require__.r(__webpack_exports__);
         phone: '',
         subject: '',
         photo: ''
-      })
+      }),
+      contacts: {}
     };
   },
   methods: {
     createContact: function createContact() {
       this.form.post('contacts');
+    },
+    loadContacts: function loadContacts() {
+      var _this = this;
+
+      axios.get('contacts').then(function (_ref) {
+        var data = _ref.data;
+        return _this.contacts = data;
+      });
     }
+  },
+  created: function created() {
+    this.loadContacts();
   }
 });
 
@@ -22058,10 +22074,106 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
-    _vm._m(0),
+    _c("div", { staticClass: "col-12" }, [
+      _c("div", { staticClass: "card-box" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("h4", { staticClass: "header-title mb-4" }, [
+          _vm._v("Manage Users")
+        ]),
+        _vm._v(" "),
+        _c(
+          "table",
+          {
+            staticClass:
+              "table table-hover m-0 table-centered dt-responsive nowrap w-100",
+            attrs: { id: "tickets-table" }
+          },
+          [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.contacts, function(contact) {
+                return _c("tr", { key: contact.id }, [
+                  _c("td", [_c("b", [_vm._v(_vm._s(contact.id))])]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "text-body",
+                        attrs: { href: "javascript: void(0);" }
+                      },
+                      [
+                        _c("img", {
+                          staticClass: "rounded-circle avatar-xs",
+                          attrs: {
+                            src: "assets/images/users/user-2.jpg",
+                            alt: "contact-img",
+                            title: "contact-img"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "ml-2" }, [
+                          _vm._v(_vm._s(_vm._f("capitalFirst")(contact.name)))
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm._f("capitalFirst")(contact.position)) +
+                        "\n                    "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(_vm._f("capitalFirst")(contact.company)) +
+                        "\n                    "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(contact.email) +
+                        "\n                    "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(contact.phone) +
+                        "\n                    "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(contact.subject) +
+                        "\n                    "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(2, true)
+                ])
+              }),
+              0
+            )
+          ]
+        )
+      ])
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "modal-demo", attrs: { id: "custom-modal" } }, [
-      _vm._m(1),
+      _vm._m(3),
       _vm._v(" "),
       _c("h4", { staticClass: "custom-modal-title" }, [_vm._v("Add User")]),
       _vm._v(" "),
@@ -22238,7 +22350,7 @@ var render = function() {
               })
             ]),
             _vm._v(" "),
-            _vm._m(2),
+            _vm._m(4),
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
               _c("label", { attrs: { for: "subject" } }, [_vm._v("Subject")]),
@@ -22270,7 +22382,7 @@ var render = function() {
               })
             ]),
             _vm._v(" "),
-            _vm._m(3)
+            _vm._m(5)
           ]
         )
       ])
@@ -22282,194 +22394,97 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12" }, [
-      _c("div", { staticClass: "card-box" }, [
+    return _c(
+      "a",
+      {
+        staticClass: "btn btn-danger waves-effect waves-light float-right",
+        attrs: {
+          href: "#custom-modal",
+          "data-animation": "fadein",
+          "data-plugin": "custommodal",
+          "data-overlayColor": "#38414a"
+        }
+      },
+      [_c("i", { staticClass: "mdi mdi-plus-circle mr-1" }), _vm._v(" Add New")]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Full Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Position")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Company")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Email")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Phone Number")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Subject")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "hidden-sm" }, [_vm._v("Action")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "btn-group dropdown" }, [
         _c(
           "a",
           {
-            staticClass: "btn btn-danger waves-effect waves-light float-right",
+            staticClass:
+              "table-action-btn dropdown-toggle arrow-none btn btn-light btn-sm",
             attrs: {
-              href: "#custom-modal",
-              "data-animation": "fadein",
-              "data-plugin": "custommodal",
-              "data-overlayColor": "#38414a"
+              href: "javascript: void(0);",
+              "data-toggle": "dropdown",
+              "aria-expanded": "false"
             }
           },
-          [
-            _c("i", { staticClass: "mdi mdi-plus-circle mr-1" }),
-            _vm._v(" Add New")
-          ]
+          [_c("i", { staticClass: "mdi mdi-dots-horizontal" })]
         ),
         _vm._v(" "),
-        _c("h4", { staticClass: "header-title mb-4" }, [
-          _vm._v("Manage Users")
-        ]),
-        _vm._v(" "),
-        _c(
-          "table",
-          {
-            staticClass:
-              "table table-hover m-0 table-centered dt-responsive nowrap w-100",
-            attrs: { id: "tickets-table" }
-          },
-          [
-            _c("thead", [
-              _c("tr", [
-                _c("th", [_vm._v("ID")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Full Name")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Subject")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Phone Number")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Created Date")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Due Date")]),
-                _vm._v(" "),
-                _c("th", { staticClass: "hidden-sm" }, [_vm._v("Action")])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("tbody", [
-              _c("tr", [
-                _c("td", [_c("b", [_vm._v("#1256")])]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "text-body",
-                      attrs: { href: "javascript: void(0);" }
-                    },
-                    [
-                      _c("img", {
-                        staticClass: "rounded-circle avatar-xs",
-                        attrs: {
-                          src: "assets/images/users/user-2.jpg",
-                          alt: "contact-img",
-                          title: "contact-img"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "ml-2" }, [
-                        _vm._v("George A. Llanes")
-                      ])
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _vm._v(
-                    "\n                        Support for theme\n                    "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _vm._v(
-                    "\n                        0899999\n                    "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _vm._v(
-                    "\n                        2017/04/28\n                    "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _vm._v(
-                    "\n                        2017/04/28\n                    "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c("div", { staticClass: "btn-group dropdown" }, [
-                    _c(
-                      "a",
-                      {
-                        staticClass:
-                          "table-action-btn dropdown-toggle arrow-none btn btn-light btn-sm",
-                        attrs: {
-                          href: "javascript: void(0);",
-                          "data-toggle": "dropdown",
-                          "aria-expanded": "false"
-                        }
-                      },
-                      [_c("i", { staticClass: "mdi mdi-dots-horizontal" })]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "dropdown-menu dropdown-menu-right" },
-                      [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "dropdown-item",
-                            attrs: { href: "#" }
-                          },
-                          [
-                            _c("i", {
-                              staticClass:
-                                "mdi mdi-pencil mr-2 text-muted font-18 vertical-middle"
-                            }),
-                            _vm._v("Edit Ticket")
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass: "dropdown-item",
-                            attrs: { href: "#" }
-                          },
-                          [
-                            _c("i", {
-                              staticClass:
-                                "mdi mdi-check-all mr-2 text-muted font-18 vertical-middle"
-                            }),
-                            _vm._v("Close")
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass: "dropdown-item",
-                            attrs: { href: "#" }
-                          },
-                          [
-                            _c("i", {
-                              staticClass:
-                                "mdi mdi-delete mr-2 text-muted font-18 vertical-middle"
-                            }),
-                            _vm._v("Remove")
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass: "dropdown-item",
-                            attrs: { href: "#" }
-                          },
-                          [
-                            _c("i", {
-                              staticClass:
-                                "mdi mdi-star mr-2 font-18 text-muted vertical-middle"
-                            }),
-                            _vm._v("Mark as Unread")
-                          ]
-                        )
-                      ]
-                    )
-                  ])
-                ])
-              ])
-            ])
-          ]
-        )
+        _c("div", { staticClass: "dropdown-menu dropdown-menu-right" }, [
+          _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
+            _c("i", {
+              staticClass:
+                "mdi mdi-pencil mr-2 text-muted font-18 vertical-middle"
+            }),
+            _vm._v("Edit Ticket")
+          ]),
+          _vm._v(" "),
+          _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
+            _c("i", {
+              staticClass:
+                "mdi mdi-check-all mr-2 text-muted font-18 vertical-middle"
+            }),
+            _vm._v("Close")
+          ]),
+          _vm._v(" "),
+          _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
+            _c("i", {
+              staticClass:
+                "mdi mdi-delete mr-2 text-muted font-18 vertical-middle"
+            }),
+            _vm._v("Remove")
+          ]),
+          _vm._v(" "),
+          _c("a", { staticClass: "dropdown-item", attrs: { href: "#" } }, [
+            _c("i", {
+              staticClass:
+                "mdi mdi-star mr-2 font-18 text-muted vertical-middle"
+            }),
+            _vm._v("Mark as Unread")
+          ])
+        ])
       ])
     ])
   },
@@ -37596,6 +37611,9 @@ var routes = [{
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
   routes: routes
+});
+Vue.filter('capitalFirst', function (text) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
 });
 /**
  * The following block of code may be used to automatically register your

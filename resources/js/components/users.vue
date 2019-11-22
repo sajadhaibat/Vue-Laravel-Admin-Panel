@@ -11,38 +11,42 @@
                     <tr>
                         <th>ID</th>
                         <th>Full Name</th>
-                        <th>Subject</th>
+                        <th>Position</th>
+                        <th>Company</th>
+                        <th>Email</th>
                         <th>Phone Number</th>
-                        <th>Created Date</th>
-                        <th>Due Date</th>
+                        <th>Subject</th>
                         <th class="hidden-sm">Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td><b>#1256</b></td>
+                    <tr v-for="contact in contacts" :key="contact.id">
+                        <td><b>{{contact.id}}</b></td>
                         <td>
                             <a href="javascript: void(0);" class="text-body">
                                 <img src="assets/images/users/user-2.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-xs" />
-                                <span class="ml-2">George A. Llanes</span>
+                                <span class="ml-2">{{contact.name | capitalFirst}}</span>
                             </a>
                         </td>
 
                         <td>
-                            Support for theme
+                            {{contact.position | capitalFirst}}
                         </td>
 
                         <td>
-                            0899999
+                            {{contact.company | capitalFirst}}
                         </td>
 
 
                         <td>
-                            2017/04/28
+                            {{contact.email}}
                         </td>
 
                         <td>
-                            2017/04/28
+                            {{contact.phone}}
+                        </td>
+                        <td>
+                            {{contact.subject}}
                         </td>
 
                         <td>
@@ -125,13 +129,21 @@
                     phone : '',
                     subject : '',
                     photo : ''
-                })
+                }),
+                contacts: {},
             }
         },
         methods: {
             createContact(){
                 this.form.post('contacts');
-            }
+            },
+            loadContacts(){
+                axios.get('contacts').then(({data}) => (this.contacts = data));
+            },
+        },
+
+        created() {
+            this.loadContacts();
         }
     }
 </script>
