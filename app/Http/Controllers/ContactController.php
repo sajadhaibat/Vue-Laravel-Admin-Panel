@@ -36,19 +36,9 @@ class ContactController extends Controller
     public function store(Request $request)
     {
 
-        $imageName = time() . '-' . preg_match_all('/data\:image\/([a-zA-Z]+)\;base64/',$request->photo,$matched).'.jpg';
-//        $ext = isset($matched[1][0]) ? $matched[1][0] : false;
-//        $image = explode(';', explode('/', $request->photo)[1])[0];
-
-
-//        $imageName = time() . '-' . explode('/', explode(':',substr($request->photo, 0, strpos())));
-//        $info = getimagesizefromstring(explode(',', base64_decode($request->photo)[1], 2));
-
-//        dd($imageName);
-            // result png
+//        $imageName = time() . '-' . preg_match_all('/data\:image\/([a-zA-Z]+)\;base64/',$request->photo,$matched).'.jpg';
+        $imageName = time() . '.' . explode('/',explode(':', substr($request->photo, 0, strpos($request->photo, ';')))[1])[1];
          \Image::make($request->photo)->save(public_path('/assets/uploaded_images/'). $imageName);
-//        ;
-
 //       dd($imageName);
 
         $contact = new Contact();
@@ -58,7 +48,7 @@ class ContactController extends Controller
         $contact->company = $request->company;
         $contact->phone = $request->phone;
         $contact->subject = $request->subject;
-//        $contact->photo = $request->photo;
+        $contact->photo = $imageName;
         $contact->save();
     }
 

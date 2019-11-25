@@ -27,7 +27,7 @@
                         <td><b>{{contact.id}}</b></td>
                         <td>
                             <a href="javascript: void(0);" class="text-body">
-                                <img src="assets/images/users/user-2.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-xs" />
+                                <img v-bind:src="'/assets/uploaded_images/'+ contact.photo" alt="contact-img" title="contact-img" class="rounded-circle avatar-xs" />
                                 <span class="ml-2">{{contact.name | capitalFirst}}</span>
                             </a>
                         </td>
@@ -155,10 +155,13 @@
             openContactModal(contact){
                 if (contact == null){
                     this.form.reset();
+                    this.$refs.myFiles.value = "" ;
+                    // this.form.photo = null;
                     this.editMode = false;
                 }
                 else {
                     this.form.fill(contact);
+                    // this.$refs.myFiles.value = this.form.photo;
                     this.editMode = true;
                 }
                 $('#contactModal').modal('show');
