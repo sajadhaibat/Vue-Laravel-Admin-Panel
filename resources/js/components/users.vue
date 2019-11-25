@@ -106,7 +106,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="photo">Photo</label>
-                                <input type="file" class="form-control" id="photo" name="photo">
+                                <input type="file" class="form-control" id="photo" name="photo" ref="myFiles" value="" @change="contactPhoto()" required>
                             </div>
                             <div class="form-group">
                                 <label for="subject">Subject</label>
@@ -145,7 +145,7 @@
                     company : '',
                     phone : '',
                     subject : '',
-                    photo : ''
+                    photo : '',
                 }),
                 contacts: {},
                 editMode: false,
@@ -245,6 +245,17 @@
                             timer: 1500
                         });
                     });
+            },
+            contactPhoto(){
+                // console.log(this.$refs.myFiles.files);
+                 // array d = this.$refs.myFiles.files;
+                let file =this.$refs.myFiles.files[0];
+                // let file = this.$refs.myFiles.files;
+                let reader = new FileReader();
+                reader.onloadend =  () => {
+                    this.form.photo = reader.result;
+                }
+                reader.readAsDataURL(file);
             },
         },
 
