@@ -8,27 +8,40 @@
             <ul class="metismenu" id="side-menu">
 
                 <li class="menu-title">Navigation</li>
+                <br>
+                <li style="padding:10px 20px">
+                    <router-link to="/dashboard"><i class="fe-settings"></i> Dashboard</router-link>
+                </li>
+                <li style="padding:10px 20px">
+                        <router-link to="/users"><i class="fe-user"></i> Users Lists</router-link>
+                </li>
 
-                                <li>
-                                    <a href="javascript: void(0);">
-                                        <i class="fe-user"></i>
-                                        <span> Users </span>
-                                    </a>
-                                    <ul class="nav-second-level" aria-expanded="false">
-                                        <li>
-                                            <router-link to="/users">Users Lists</router-link>
-                                        </li>
-                                        <li>
-                                            <router-link to="/dashboard">Dashboard</router-link>
-                                        </li>
+                  <li style="padding:10px 20px">
+                        <router-link to="/profiles"><i class="fe-user-check"></i> Profles</router-link>
+                </li>
+
+
+
+{{--                                <li>--}}
+{{--                                    <a href="javascript: void(0);">--}}
+{{--                                        <i class="fe-user"></i>--}}
+{{--                                        <span> Users </span>--}}
+{{--                                    </a>--}}
+{{--                                    <ul class="nav-second-level" aria-expanded="false">--}}
+{{--                                        <li>--}}
+{{--                                            <router-link to="/users">Users Lists</router-link>--}}
+{{--                                        </li>--}}
+{{--                                        <li>--}}
+{{--                                            <router-link to="/dashboard">Dashboard</router-link>--}}
+{{--                                        </li>--}}
 {{--                                        <li>--}}
 {{--                                            <a href="dashboard-3.html">Dashboard 3</a>--}}
 {{--                                        </li>--}}
 {{--                                        <li>--}}
 {{--                                            <a href="dashboard-4.html">Dashboard 4</a>--}}
 {{--                                        </li>--}}
-                                    </ul>
-                                </li>
+{{--                                    </ul>--}}
+{{--                                </li>--}}
 
 
                 {{--                <li>--}}
