@@ -41233,6 +41233,9 @@ Vue.component(vform__WEBPACK_IMPORTED_MODULE_2__["AlertError"].name, vform__WEBP
 
 Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_3__["default"]);
 var routes = [{
+  path: '/',
+  component: __webpack_require__(/*! ./components/dashboard.vue */ "./resources/js/components/dashboard.vue")["default"]
+}, {
   path: '/users',
   component: __webpack_require__(/*! ./components/users.vue */ "./resources/js/components/users.vue")["default"]
 }, {
