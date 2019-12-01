@@ -23,6 +23,9 @@ let routes = [
     {path: '/dashboard', component:require('./components/dashboard.vue').default },
     {path: '/profiles', component:require('./components/Profiles.vue').default },
     {path: '/tabs', component:require('./components/tabs-accordions.vue').default },
+    {path: '/pricing', component:require('./components/pricing.vue').default },
+    {path: '/widgets', component:require('./components/widgets.vue').default },
+    {path: '/form-elements', component:require('./components/form-elements.vue').default },
     {path: '*', component:require('./components/Notfound.vue').default },
     //{path: '/do', component: do },
 ];

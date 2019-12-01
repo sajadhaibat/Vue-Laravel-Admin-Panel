@@ -29,5 +29,6 @@ mix.scripts([
     'public/assets/js/pages/tickets.js',
     'public/assets/js/pages/dashboard-3.init.js',
     'public/assets/js/app.min.js',
+    'public/assets/js/pages/widgets.init.js',
 ], 'public/js/all.js');
 

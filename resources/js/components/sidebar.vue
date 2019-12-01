@@ -22,6 +22,15 @@
                     </li>
                     <li style="padding:10px 20px">
                         <router-link to="/tabs"><i class="fe-tablet"></i> Tabs</router-link>
+
+                    <li style="padding:10px 20px">
+                        <router-link to="/pricing"><i class="fe-copy"></i> Pricing</router-link>
+                    </li>
+                    <li style="padding:10px 20px">
+                        <router-link to="/widgets"><i class="fe-wind"></i> Widgets</router-link>
+                    </li>
+                    <li style="padding:10px 20px">
+                        <router-link to="/form-elements"><i class="fe-award"></i> Form Elements</router-link>
                     </li>
                 </ul>
 

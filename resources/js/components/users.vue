@@ -108,6 +108,7 @@
                                 <label for="photo">Photo</label>
                                 <input v-if="!editMode" type="file" class="form-control" id="photo" name="photo" ref="myFiles" value="" @change="contactPhoto()" required>
                                 <input v-if="editMode" type="file" class="form-control"  name="photo" ref="myFiles" value="" @change="contactPhoto()">
+                                <span v-if="editMode" style="color: black"> You already uploaded your picture, want to upload new one?</span>
                             </div>
                             <div class="form-group">
                                 <label for="subject">Subject</label>
