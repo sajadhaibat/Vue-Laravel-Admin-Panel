@@ -21,11 +21,13 @@ mix.styles([
 ], 'public/css/all.css');
 mix.scripts([
     'public/assets/js/vendor.min.js',
+    'public/assets/libs/chart-js/Chart.bundle.min.js',
     'public/assets/libs/datatables/jquery.dataTables.min.js',
     'public/assets/libs/datatables/dataTables.bootstrap4.js',
     'public/assets/libs/datatables/dataTables.responsive.min.js',
     'public/assets/libs/datatables/responsive.bootstrap4.min.js',
     'public/assets/js/pages/tickets.js',
+    'public/assets/js/pages/dashboard-3.init.js',
     'public/assets/js/app.min.js',
 ], 'public/js/all.js');
 

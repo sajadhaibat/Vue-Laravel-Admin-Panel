@@ -2169,6 +2169,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "dashboard"
 });
@@ -25385,126 +25420,314 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-6 col-xl-3" }, [
-        _c("div", { staticClass: "widget-rounded-circle card-box" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-6" }, [
-              _c(
-                "div",
-                { staticClass: "avatar-lg rounded-circle bg-primary" },
-                [
-                  _c("i", {
-                    staticClass: "fe-tag font-22 avatar-title text-white"
-                  })
-                ]
-              )
+    return _c("div", { staticClass: "container-fluid" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-6 col-xl-3" }, [
+          _c("div", { staticClass: "card-box" }, [
+            _c("i", {
+              staticClass: "fa fa-info-circle text-muted float-right",
+              attrs: {
+                "data-toggle": "tooltip",
+                "data-placement": "bottom",
+                title: "",
+                "data-original-title": "More Info"
+              }
+            }),
+            _vm._v(" "),
+            _c("h4", { staticClass: "mt-0 font-16" }, [
+              _vm._v("Income Status")
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-6" }, [
-              _c("div", { staticClass: "text-right" }, [
-                _c("h3", { staticClass: "text-dark mt-1" }, [
-                  _c("span", { attrs: { "data-plugin": "counterup" } }, [
-                    _vm._v("3,947")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "text-muted mb-1 text-truncate" }, [
-                  _vm._v("Total Users")
-                ])
+            _c("h2", { staticClass: "text-primary my-3 text-center" }, [
+              _vm._v("$"),
+              _c("span", { attrs: { "data-plugin": "counterup" } }, [
+                _vm._v("31,570")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-muted mb-0" }, [
+              _vm._v("Total income: $22506 "),
+              _c("span", { staticClass: "float-right" }, [
+                _c("i", { staticClass: "fa fa-caret-up text-success mr-1" }),
+                _vm._v("10.25%")
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6 col-xl-3" }, [
+          _c("div", { staticClass: "card-box" }, [
+            _c("i", {
+              staticClass: "fa fa-info-circle text-muted float-right",
+              attrs: {
+                "data-toggle": "tooltip",
+                "data-placement": "bottom",
+                title: "",
+                "data-original-title": "More Info"
+              }
+            }),
+            _vm._v(" "),
+            _c("h4", { staticClass: "mt-0 font-16" }, [_vm._v("Sales Status")]),
+            _vm._v(" "),
+            _c("h2", { staticClass: "text-primary my-3 text-center" }, [
+              _c("span", { attrs: { "data-plugin": "counterup" } }, [
+                _vm._v("683")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-muted mb-0" }, [
+              _vm._v("Total sales: 2398 "),
+              _c("span", { staticClass: "float-right" }, [
+                _c("i", { staticClass: "fa fa-caret-down text-danger mr-1" }),
+                _vm._v("7.85%")
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6 col-xl-3" }, [
+          _c("div", { staticClass: "card-box" }, [
+            _c("i", {
+              staticClass: "fa fa-info-circle text-muted float-right",
+              attrs: {
+                "data-toggle": "tooltip",
+                "data-placement": "bottom",
+                title: "",
+                "data-original-title": "More Info"
+              }
+            }),
+            _vm._v(" "),
+            _c("h4", { staticClass: "mt-0 font-16" }, [_vm._v("Recent Users")]),
+            _vm._v(" "),
+            _c("h2", { staticClass: "text-primary my-3 text-center" }, [
+              _c("span", { attrs: { "data-plugin": "counterup" } }, [
+                _vm._v("3.2")
+              ]),
+              _vm._v("M")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-muted mb-0" }, [
+              _vm._v("Total users: 121 M "),
+              _c("span", { staticClass: "float-right" }, [
+                _c("i", { staticClass: "fa fa-caret-up text-success mr-1" }),
+                _vm._v("3.64%")
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6 col-xl-3" }, [
+          _c("div", { staticClass: "card-box" }, [
+            _c("i", {
+              staticClass: "fa fa-info-circle text-muted float-right",
+              attrs: {
+                "data-toggle": "tooltip",
+                "data-placement": "bottom",
+                title: "",
+                "data-original-title": "More Info"
+              }
+            }),
+            _vm._v(" "),
+            _c("h4", { staticClass: "mt-0 font-16" }, [
+              _vm._v("Total Revenue")
+            ]),
+            _vm._v(" "),
+            _c("h2", { staticClass: "text-primary my-3 text-center" }, [
+              _vm._v("$"),
+              _c("span", { attrs: { "data-plugin": "counterup" } }, [
+                _vm._v("68,541")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-muted mb-0" }, [
+              _vm._v("Total revenue: $1.2 M "),
+              _c("span", { staticClass: "float-right" }, [
+                _c("i", { staticClass: "fa fa-caret-up text-success mr-1" }),
+                _vm._v("17.48%")
               ])
             ])
           ])
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-6 col-xl-3" }, [
-        _c("div", { staticClass: "widget-rounded-circle card-box" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-6" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-6" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-body" }, [
               _c(
                 "div",
-                { staticClass: "avatar-lg rounded-circle bg-warning" },
+                { staticClass: "float-right d-none d-md-inline-block" },
                 [
-                  _c("i", {
-                    staticClass: "fe-clock font-22 avatar-title text-white"
-                  })
+                  _c("div", { staticClass: "btn-group mb-2" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-xs btn-secondary",
+                        attrs: { type: "button" }
+                      },
+                      [_vm._v("Today")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-xs btn-light",
+                        attrs: { type: "button" }
+                      },
+                      [_vm._v("Weekly")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-xs btn-light",
+                        attrs: { type: "button" }
+                      },
+                      [_vm._v("Monthly")]
+                    )
+                  ])
                 ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-6" }, [
-              _c("div", { staticClass: "text-right" }, [
-                _c("h3", { staticClass: "text-dark mt-1" }, [
-                  _c("span", { attrs: { "data-plugin": "counterup" } }, [
-                    _vm._v("624")
+              ),
+              _vm._v(" "),
+              _c("h4", { staticClass: "header-title" }, [_vm._v("Revenue")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row mt-4 text-center" }, [
+                _c("div", { staticClass: "col-4" }, [
+                  _c(
+                    "p",
+                    { staticClass: "text-muted font-15 mb-1 text-truncate" },
+                    [_vm._v("Target")]
+                  ),
+                  _vm._v(" "),
+                  _c("h4", [
+                    _c("i", { staticClass: "fe-arrow-down text-danger mr-1" }),
+                    _vm._v("$7.8k")
                   ])
                 ]),
                 _vm._v(" "),
-                _c("p", { staticClass: "text-muted mb-1 text-truncate" }, [
-                  _vm._v("Pending Tickets")
-                ])
-              ])
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6 col-xl-3" }, [
-        _c("div", { staticClass: "widget-rounded-circle card-box" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-6" }, [
-              _c(
-                "div",
-                { staticClass: "avatar-lg rounded-circle bg-success" },
-                [
-                  _c("i", {
-                    staticClass:
-                      "fe-check-circle font-22 avatar-title text-white"
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-6" }, [
-              _c("div", { staticClass: "text-right" }, [
-                _c("h3", { staticClass: "text-dark mt-1" }, [
-                  _c("span", { attrs: { "data-plugin": "counterup" } }, [
-                    _vm._v("3195")
+                _c("div", { staticClass: "col-4" }, [
+                  _c(
+                    "p",
+                    { staticClass: "text-muted font-15 mb-1 text-truncate" },
+                    [_vm._v("Last week")]
+                  ),
+                  _vm._v(" "),
+                  _c("h4", [
+                    _c("i", { staticClass: "fe-arrow-up text-success mr-1" }),
+                    _vm._v("$1.4k")
                   ])
                 ]),
                 _vm._v(" "),
-                _c("p", { staticClass: "text-muted mb-1 text-truncate" }, [
-                  _vm._v("Closed Tickets")
+                _c("div", { staticClass: "col-4" }, [
+                  _c(
+                    "p",
+                    { staticClass: "text-muted font-15 mb-1 text-truncate" },
+                    [_vm._v("Last Month")]
+                  ),
+                  _vm._v(" "),
+                  _c("h4", [
+                    _c("i", { staticClass: "fe-arrow-down text-danger mr-1" }),
+                    _vm._v("$15k")
+                  ])
                 ])
-              ])
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6 col-xl-3" }, [
-        _c("div", { staticClass: "widget-rounded-circle card-box" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-6" }, [
-              _c("div", { staticClass: "avatar-lg rounded-circle bg-danger" }, [
-                _c("i", {
-                  staticClass: "fe-trash-2 font-22 avatar-title text-white"
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "mt-3 chartjs-chart" }, [
+                _c("canvas", {
+                  attrs: { id: "line-chart-example", height: "300" }
                 })
               ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-6" }, [
-              _c("div", { staticClass: "text-right" }, [
-                _c("h3", { staticClass: "text-dark mt-1" }, [
-                  _c("span", { attrs: { "data-plugin": "counterup" } }, [
-                    _vm._v("128")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-6" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-body" }, [
+              _c(
+                "div",
+                { staticClass: "float-right d-none d-md-inline-block" },
+                [
+                  _c("div", { staticClass: "btn-group mb-2" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-xs btn-secondary",
+                        attrs: { type: "button" }
+                      },
+                      [_vm._v("Today")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-xs btn-light",
+                        attrs: { type: "button" }
+                      },
+                      [_vm._v("Weekly")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-xs btn-light",
+                        attrs: { type: "button" }
+                      },
+                      [_vm._v("Monthly")]
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c("h4", { staticClass: "header-title" }, [
+                _vm._v("Projections Vs Actuals")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row mt-4 text-center" }, [
+                _c("div", { staticClass: "col-4" }, [
+                  _c(
+                    "p",
+                    { staticClass: "text-muted font-15 mb-1 text-truncate" },
+                    [_vm._v("Target")]
+                  ),
+                  _vm._v(" "),
+                  _c("h4", [
+                    _c("i", { staticClass: "fe-arrow-down text-danger mr-1" }),
+                    _vm._v("$3.8k")
                   ])
                 ]),
                 _vm._v(" "),
-                _c("p", { staticClass: "text-muted mb-1 text-truncate" }, [
-                  _vm._v("Deleted Tickets")
+                _c("div", { staticClass: "col-4" }, [
+                  _c(
+                    "p",
+                    { staticClass: "text-muted font-15 mb-1 text-truncate" },
+                    [_vm._v("Last week")]
+                  ),
+                  _vm._v(" "),
+                  _c("h4", [
+                    _c("i", { staticClass: "fe-arrow-up text-success mr-1" }),
+                    _vm._v("$1.1k")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-4" }, [
+                  _c(
+                    "p",
+                    { staticClass: "text-muted font-15 mb-1 text-truncate" },
+                    [_vm._v("Last Month")]
+                  ),
+                  _vm._v(" "),
+                  _c("h4", [
+                    _c("i", { staticClass: "fe-arrow-down text-danger mr-1" }),
+                    _vm._v("$25k")
+                  ])
                 ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "mt-3 chartjs-chart" }, [
+                _c("canvas", {
+                  attrs: { id: "bar-chart-example", height: "300" }
+                })
               ])
             ])
           ])
