@@ -22,7 +22,8 @@ let routes = [
     {path: '/users', component:require('./components/users.vue').default },
     {path: '/dashboard', component:require('./components/dashboard.vue').default },
     {path: '/profiles', component:require('./components/Profiles.vue').default },
-    {path: '*', component:require('./components/Notfound').default },
+    {path: '/tabs', component:require('./components/tabs-accordions.vue').default },
+    {path: '*', component:require('./components/Notfound.vue').default },
     //{path: '/do', component: do },
 ];
 const router = new VueRouter({

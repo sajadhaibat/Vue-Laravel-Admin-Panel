@@ -106,7 +106,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="photo">Photo</label>
-                                <input type="file" class="form-control" id="photo" name="photo" ref="myFiles" value="" @change="contactPhoto()" required>
+                                <input v-if="!editMode" type="file" class="form-control" id="photo" name="photo" ref="myFiles" value="" @change="contactPhoto()" required>
+                                <input v-if="editMode" type="file" class="form-control"  name="photo" ref="myFiles" value="" @change="contactPhoto()">
                             </div>
                             <div class="form-group">
                                 <label for="subject">Subject</label>

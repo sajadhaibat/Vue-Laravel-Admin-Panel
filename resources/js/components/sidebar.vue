@@ -20,6 +20,9 @@
                     <li style="padding:10px 20px">
                         <router-link to="/profiles"><i class="fe-user-check"></i> Profles</router-link>
                     </li>
+                    <li style="padding:10px 20px">
+                        <router-link to="/tabs"><i class="fe-tablet"></i> Tabs</router-link>
+                    </li>
                 </ul>
 
             </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ContactController extends Controller
 {
@@ -84,13 +85,25 @@ class ContactController extends Controller
     public function update(Request $request, Contact $contact)
     {
         $contact = Contact::findorFail($contact->id);
+        if ($request->photo != $contact->photo){
+            $image_path = "assets/uploaded_images/".$contact->photo;  // Value is not URL but directory file path
+            if(File::exists($image_path)) {
+                File::delete($image_path);
+            }
+            $imageName = time() . '.' . explode('/',explode(':', substr($request->photo, 0, strpos($request->photo, ';')))[1])[1];
+            \Image::make($request->photo)->save(public_path('/assets/uploaded_images/'). $imageName);
+        }
+        else {
+            $imageName = $request->photo;
+        }
+//        dd($imageName);
         $contact->name = $request->name;
         $contact->email = $request->email;
         $contact->position = $request->position;
         $contact->company = $request->company;
         $contact->phone = $request->phone;
         $contact->subject = $request->subject;
-        $contact->photo = $request->photo;
+        $contact->photo = $imageName;
         $contact->save();
     }
 
@@ -103,6 +116,10 @@ class ContactController extends Controller
     public function destroy(Contact $contact)
     {
         $contact = Contact::findorFail($contact->id);
+        $image_path = "assets/uploaded_images/".$contact->photo;  // Value is not URL but directory file path
+        if(File::exists($image_path)) {
+            File::delete($image_path);
+        }
         $contact->delete();
     }
 }
