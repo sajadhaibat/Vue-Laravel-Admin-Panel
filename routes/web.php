@@ -15,7 +15,8 @@
 //    return view('welcome');
 //});
 
-Route::get("/", "PageController@index");
+//Route::get("/", "PageController@index");
+Route::redirect("/", "/dashboard");
 Route::resources([
     'contacts' => 'ContactController'
 ]);

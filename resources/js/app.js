@@ -18,7 +18,7 @@ Vue.component(AlertError.name, AlertError);
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 let routes = [
-    {path: '/', component:require('./components/dashboard.vue').default },
+    // {path: '/', component:require('./components/dashboard.vue').default },
     {path: '/users', component:require('./components/users.vue').default },
     {path: '/dashboard', component:require('./components/dashboard.vue').default },
     {path: '/profiles', component:require('./components/Profiles.vue').default },
@@ -63,6 +63,9 @@ Vue.use(VueProgressBar, options);
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('top-navbar', require('./components/top_navbar.vue').default);
+Vue.component('side-bar', require('./components/sidebar.vue').default);
+Vue.component('pagef', require('./components/pagefooter.vue').default);
+Vue.component('pagebox', require('./components/Pagebox.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
